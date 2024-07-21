@@ -36,4 +36,20 @@ spec:
       resources:
         requests:
           storage: 5Gi
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  mongodb
+spec:
+  clusterIP: none
+  selector:
+    app: mongodb
+    tier: db
+    project: roboshop
+  ports:
+  - name:  mongodb-port
+    port:  27017
+    protocol: TCP
+    targetPort:  27017
 
